@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Demonstração de layout para a página de vendas do produto digital SOS Abstinência Emocional. Textos e imagens são placeholders e serão substituídos pelo material da cliente.">
+  <title>Demonstração — SOS Abstinência Emocional</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face { font-family: "Nunito"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/nunito-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Nunito"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fonts/nunito-latin-400-italic.woff2") format("woff2"); }
+    @font-face { font-family: "Nunito"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/nunito-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Fraunces"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/fraunces-latin-400-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Fraunces"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fonts/fraunces-latin-400-italic.woff2") format("woff2"); }
+    @font-face { font-family: "Fraunces"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/fraunces-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Fraunces"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/fraunces-latin-600-normal.woff2") format("woff2"); }
+    :root {
+      --bg: #f3ece3;
+      --bg-deep: #e7ddd0;
+      --paper: #fffbf6;
+      --ink: #2a221e;
+      --ink-soft: #5a524b;
+      --rose: #8c4a4a;
+      --rose-deep: #6f3a3a;
+      --rose-soft: #f3e4de;
+      --sage: #5e6b56;
+      --sage-soft: #e4e8df;
+      --gold: #a9845c;
+      --gold-soft: #f0e6d6;
+      --line: rgba(42, 34, 30, 0.12);
+      --shadow: 0 18px 44px rgba(42, 34, 30, 0.08);
+      --serif: "Fraunces", "Cormorant Garamond", "Palatino Linotype", Palatino, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      --sans: "Nunito", "Source Sans 3", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+      --banner-h: 3.15rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--banner-h) + 0.75rem);
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 100% 0%, rgba(140, 74, 74, 0.08), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 0% 20%, rgba(94, 107, 86, 0.1), transparent 50%),
+        var(--bg);
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+
+    img, svg { max-width: 100%; display: block; }
+
+    a { color: var(--rose-deep); }
+
+    :focus-visible {
+      outline: 2px solid var(--rose);
+      outline-offset: 3px;
+    }
+
+    .skip {
+      position: absolute;
+      left: 0.75rem;
+      top: -4rem;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.5rem 0.85rem;
+      border-radius: 0.4rem;
+      z-index: 40;
+    }
+    .skip:focus { top: calc(var(--banner-h) + 0.5rem); }
+
+    .demo-banner {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: #2a221e;
+      color: #f6efe6;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      padding: 0.65rem 1rem;
+    }
+
+    .wrap {
+      width: min(1100px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    header.site {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 0;
+    }
+
+    .wordmark {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .mark {
+      width: 2.4rem;
+      height: 2.4rem;
+      flex: none;
+    }
+
+    .wordmark strong {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+
+    .wordmark span {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 0.12rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1.05rem;
+      font-size: 0.92rem;
+    }
+
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--rose); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      background: var(--rose);
+      color: #fffbf6;
+      text-decoration: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.9rem 1.45rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 24px rgba(140, 74, 74, 0.22);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover { background: var(--rose-deep); color: #fffbf6; }
+    .btn:active { transform: translateY(1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--rose-deep);
+      box-shadow: none;
+      border: 1px solid rgba(140, 74, 74, 0.35);
+    }
+    .btn-ghost:hover { background: var(--rose-soft); color: var(--rose-deep); }
+    .btn-lg { padding: 1.05rem 1.7rem; font-size: 1.05rem; }
+
+    .header-cta { display: none; }
+
+    @media (max-width: 799px) {
+      header.site {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1rem 0 0.35rem;
+      }
+      nav {
+        width: 100%;
+        gap: 0.45rem 1rem;
+        font-size: 0.88rem;
+      }
+    }
+
+    .hero {
+      display: grid;
+      gap: 2.4rem;
+      padding: 1.2rem 0 3.4rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 1.4rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1, h2, h3, .serif { font-family: var(--serif); font-weight: 500; }
+
+    h1 {
+      font-size: clamp(2.05rem, 5vw, 3.35rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .lede {
+      font-size: 1.12rem;
+      color: var(--ink-soft);
+      max-width: 36rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+      align-items: center;
+    }
+
+    .price-chip {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 0.55rem 0.9rem;
+      min-width: 7.5rem;
+    }
+
+    .price-chip strong {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .price-chip small {
+      font-size: 0.68rem;
+      color: var(--ink-soft);
+      margin-top: 0.2rem;
+    }
+
+    .hero-note {
+      margin-top: 1.25rem;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    .cover {
+      background:
+        linear-gradient(180deg, rgba(255, 251, 246, 0.5), transparent 30%),
+        linear-gradient(160deg, #f7efe6 0%, #ead3c8 45%, #d9c4b0 100%);
+      border-radius: 1.5rem;
+      aspect-ratio: 4 / 5;
+      max-width: 24rem;
+      margin-inline: auto;
+      box-shadow: var(--shadow), 0 0 0 1px rgba(42, 34, 30, 0.06);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.8rem 1.6rem 1.6rem;
+      color: var(--ink);
+    }
+
+    .cover svg.botanical {
+      position: absolute;
+      inset: auto -8% -6% auto;
+      width: 72%;
+      height: auto;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .cover-top, .cover-bottom { position: relative; z-index: 1; }
+
+    .cover-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      font-weight: 700;
+    }
+
+    .cover h2 {
+      font-size: 2.35rem;
+      line-height: 1;
+      margin: 0.85rem 0 0.35rem;
+    }
+
+    .cover p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+
+    .cover-bottom {
+      border-top: 1px solid rgba(42, 34, 30, 0.15);
+      padding-top: 0.9rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    section {
+      padding: 3.4rem 0;
+    }
+
+    .band {
+      background: color-mix(in srgb, var(--bg-deep) 70%, transparent);
+      border-block: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-intro {
+      color: var(--ink-soft);
+      max-width: 40rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .placeholder {
+      font-style: italic;
+      color: var(--ink-soft);
+      background: rgba(255, 251, 246, 0.7);
+      border-left: 3px solid var(--gold);
+      padding: 0.75rem 1rem;
+      border-radius: 0 0.7rem 0.7rem 0;
+      font-size: 0.95rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1.15rem;
+      padding: 1.25rem 1.3rem 1.3rem;
+      box-shadow: 0 8px 24px rgba(42, 34, 30, 0.04);
+    }
+
+    .card h3 {
+      font-size: 1.28rem;
+      margin: 0.35rem 0 0.5rem;
+    }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.85rem;
+      height: 1.85rem;
+      border-radius: 50%;
+      background: var(--rose-soft);
+      color: var(--rose-deep);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .list-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .list-card li {
+      display: grid;
+      grid-template-columns: 1.1rem 1fr;
+      gap: 0.65rem;
+      color: var(--ink-soft);
+    }
+
+    .list-card li::before {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .disclaimer {
+      margin-top: 1.2rem;
+      padding: 1rem 1.1rem;
+      border-radius: 0.9rem;
+      background: var(--sage-soft);
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .about {
+      display: grid;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 7.5rem;
+      height: 7.5rem;
+      border-radius: 50%;
+      background: linear-gradient(160deg, var(--gold-soft), var(--rose-soft));
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--rose-deep);
+    }
+
+    .guarantee {
+      display: grid;
+      gap: 1.3rem;
+      align-items: center;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1.4rem;
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .shield {
+      width: 4.2rem;
+      height: 4.2rem;
+    }
+
+    details {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 0.95rem 1.1rem;
+    }
+
+    details + details { margin-top: 0.7rem; }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      color: var(--rose);
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    details[open] summary::after { content: "–"; }
+
+    details p {
+      margin-top: 0.7rem;
+      color: var(--ink-soft);
+    }
+
+    .checkout {
+      text-align: center;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1.6rem;
+      padding: 2.2rem 1.3rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .checkout h2 { margin-bottom: 0.4rem; }
+
+    .checkout .amount {
+      font-family: var(--serif);
+      font-size: 3rem;
+      line-height: 1;
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .checkout .amount-note,
+    .checkout .demo-pay {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+
+    .checkout .demo-pay { margin-top: 1rem; font-style: italic; }
+
+    footer.site {
+      padding: 2.2rem 0 2.6rem;
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    footer.site p + p { margin-top: 0.35rem; }
+
+    @media (min-width: 800px) {
+      :root { --banner-h: 2.5rem; }
+      .header-cta { display: inline-flex; padding: 0.7rem 1.15rem; font-size: 0.92rem; }
+      nav { margin-left: auto; margin-right: 1rem; }
+      .hero {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3rem;
+        padding-top: 2rem;
+        padding-bottom: 4.2rem;
+      }
+      .cards.modules, .cards.bonuses { grid-template-columns: 1fr 1fr; }
+      .split { grid-template-columns: 1fr 1fr; }
+      .about, .guarantee { grid-template-columns: auto 1fr; gap: 2rem; }
+      .checkout { padding: 2.8rem 2.4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#topo">Ir para o conteúdo</a>
+  <div class="demo-banner" role="region" aria-label="Aviso de demonstração">
+    Esta é uma demonstração de layout. Os textos e imagens são placeholders e serão substituídos pelo material da cliente.
+  </div>
+
+  <header class="site wrap">
+    <a class="wordmark" href="#topo">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="14" fill="#8C4A4A"/>
+        <path d="M24 12c0 8-6 10-6 16a6 6 0 1 0 12 0c0-6-6-8-6-16z" fill="#F6EFE6"/>
+      </svg>
+      <span>
+        <strong>SOS Abstinência Emocional</strong>
+        <span>Produto digital</span>
+      </span>
+    </a>
+    <nav aria-label="Seções da página">
+      <a href="#conteudo">O material</a>
+      <a href="#para-quem">Para quem é</a>
+      <a href="#autora">Autora</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <a class="btn header-cta" href="#checkout">Quero acessar</a>
+  </header>
+
+  <main id="topo">
+    <section class="hero wrap" aria-labelledby="titulo-principal">
+      <div>
+        <p class="eyebrow">Material de apoio emocional</p>
+        <h1 id="titulo-principal">Um material de apoio para o período depois do término</h1>
+        <p class="lede">SOS Abstinência Emocional é um produto digital voltado a pessoas que enfrentam dificuldades emocionais após o fim de um relacionamento. Esta página mostra a estrutura de uma página de vendas clara, acolhedora e pronta para o checkout.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lg" href="#checkout">Quero acessar o material</a>
+          <div class="price-chip">
+            <strong>R$ 47</strong>
+            <small>conforme o anúncio</small>
+          </div>
+        </div>
+        <p class="hero-note">[Título, texto de abertura e identidade visual entram com o material da cliente.]</p>
+      </div>
+      <div class="cover" aria-hidden="true">
+        <svg class="botanical" viewBox="0 0 200 280" fill="none">
+          <path d="M120 270C108 210 150 190 128 140 108 96 142 70 132 20" stroke="#8C4A4A" stroke-width="1.4" opacity="0.55"/>
+          <path d="M130 86c22-10 36-4 48 16M126 128c-24-4-38 12-40 32M134 176c24 2 38-14 44-30" stroke="#5E6B56" stroke-width="1.2" opacity="0.7"/>
+          <ellipse cx="152" cy="92" rx="16" ry="9" transform="rotate(-20 152 92)" fill="#5E6B56" opacity="0.35"/>
+          <ellipse cx="98" cy="148" rx="16" ry="9" transform="rotate(30 98 148)" fill="#8C4A4A" opacity="0.28"/>
+          <ellipse cx="168" cy="160" rx="14" ry="8" transform="rotate(10 168 160)" fill="#A9845C" opacity="0.35"/>
+        </svg>
+        <div class="cover-top">
+          <p class="cover-kicker">Produto digital</p>
+          <h2>SOS</h2>
+          <p>Abstinência Emocional</p>
+        </div>
+        <p class="cover-bottom">Capa ilustrativa · sem foto</p>
+      </div>
+    </section>
+
+    <section class="band" id="identificacao" aria-labelledby="titulo-identificacao">
+      <div class="wrap">
+        <p class="section-kicker">Identificação</p>
+        <h2 id="titulo-identificacao">Se este momento tem sido pesado</h2>
+        <p class="section-intro">Muitas pessoas descrevem o período após um término como um tempo de confusão, saudade e dificuldade para retomar o próprio ritmo. Esta seção existe para a leitora se reconhecer no texto — com as palavras que você já preparou.</p>
+        <div class="cards modules">
+          <article class="card">
+            <span class="num" aria-hidden="true">01</span>
+            <h3>[Situação 1]</h3>
+            <p class="placeholder">[Seu texto de identificação aqui.]</p>
+          </article>
+          <article class="card">
+            <span class="num" aria-hidden="true">02</span>
+            <h3>[Situação 2]</h3>
+            <p class="placeholder">[Seu texto de identificação aqui.]</p>
+          </article>
+          <article class="card">
+            <span class="num" aria-hidden="true">03</span>
+            <h3>[Situação 3]</h3>
+            <p class="placeholder">[Seu texto de identificação aqui.]</p>
+          </article>
+          <article class="card">
+            <span class="num" aria-hidden="true">04</span>
+            <h3>[Situação 4]</h3>
+            <p class="placeholder">[Seu texto de identificação aqui.]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="conteudo" aria-labelledby="titulo-conteudo">
+      <div class="wrap">
+        <p class="section-kicker">O que você recebe</p>
+        <h2 id="titulo-conteudo">Apresentação do material e dos benefícios</h2>
+        <p class="section-intro">Aqui entram os módulos, os benefícios e tudo o que está incluso no produto, no tom e na ordem da estrutura que você já definiu. Nada abaixo é conteúdo oficial — só o espaço pronto para receber o seu texto.</p>
+        <div class="cards modules">
+          <article class="card">
+            <span class="num" aria-hidden="true">1</span>
+            <h3>[Módulo 1 — título]</h3>
+            <p class="placeholder">[Descrição do material e do benefício, conforme o seu texto.]</p>
+          </article>
+          <article class="card">
+            <span class="num" aria-hidden="true">2</span>
+            <h3>[Módulo 2 — título]</h3>
+            <p class="placeholder">[Descrição do material e do benefício, conforme o seu texto.]</p>
+          </article>
+          <article class="card">
+            <span class="num" aria-hidden="true">3</span>
+            <h3>[Módulo 3 — título]</h3>
+            <p class="placeholder">[Descrição do material e do benefício, conforme o seu texto.]</p>
+          </article>
+          <article class="card">
+            <span class="num" aria-hidden="true">4</span>
+            <h3>[Módulo 4 — título]</h3>
+            <p class="placeholder">[Descrição do material e do benefício, conforme o seu texto.]</p>
+          </article>
+        </div>
+        <p class="hero-note" style="margin-top:1.3rem">A quantidade de blocos se ajusta ao que você enviar. O preço de R$ 47 aparece conforme o anúncio e pode ser atualizado se houver mudança.</p>
+      </div>
+    </section>
+
+    <section class="band" id="para-quem" aria-labelledby="titulo-para-quem">
+      <div class="wrap">
+        <p class="section-kicker">Para quem é</p>
+        <h2 id="titulo-para-quem">Um material pensado para um momento específico</h2>
+        <p class="section-intro">O produto, segundo o anúncio, é voltado a quem enfrenta dificuldades emocionais após o término de um relacionamento. Os critérios finais de “para quem é” e “para quem não é” entram com o seu texto.</p>
+        <div class="split">
+          <article class="card list-card">
+            <h3>Pode fazer sentido se</h3>
+            <ul>
+              <li>[Critério da cliente]</li>
+              <li>[Critério da cliente]</li>
+              <li>[Critério da cliente]</li>
+            </ul>
+          </article>
+          <article class="card list-card">
+            <h3>Pode não ser o melhor caminho se</h3>
+            <ul>
+              <li>[Critério da cliente]</li>
+              <li>[Critério da cliente]</li>
+              <li>[Critério da cliente]</li>
+            </ul>
+          </article>
+        </div>
+        <p class="disclaimer"><strong>Importante:</strong> este é um produto digital de apoio. Ele não substitui psicoterapia, acompanhamento clínico nem orientação profissional personalizada, e esta demonstração não faz promessa de cura, resultado ou prazo de superação.</p>
+      </div>
+    </section>
+
+    <section id="bonus" aria-labelledby="titulo-bonus">
+      <div class="wrap">
+        <p class="section-kicker">Bônus</p>
+        <h2 id="titulo-bonus">Se houver bônus, eles aparecem aqui</h2>
+        <p class="section-intro">Esta área fica pronta para receber os extras do seu material. Se não houver bônus, a seção é retirada na versão final, sem deixar buraco no layout.</p>
+        <div class="cards bonuses">
+          <article class="card">
+            <h3>[Bônus 1 — título]</h3>
+            <p class="placeholder">[Descrição do bônus, se houver.]</p>
+          </article>
+          <article class="card">
+            <h3>[Bônus 2 — título]</h3>
+            <p class="placeholder">[Descrição do bônus, se houver.]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="autora" aria-labelledby="titulo-autora">
+      <div class="wrap about">
+        <div class="avatar" aria-hidden="true">M</div>
+        <div>
+          <p class="section-kicker">Sobre a autora</p>
+          <h2 id="titulo-autora">Márcia, psicanalista clínica</h2>
+          <p class="section-intro" style="margin-bottom:1rem">A apresentação profissional abaixo segue apenas o que consta no anúncio. A foto, o nome completo, a formação e o texto de apresentação entram com a sua autorização e o seu material.</p>
+          <p class="placeholder">[Seu texto e, se quiser, a sua foto. Nenhuma credencial extra foi inventada nesta demonstração.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="garantia" aria-labelledby="titulo-garantia">
+      <div class="wrap guarantee">
+        <svg class="shield" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 6l22 8v18c0 14-9 24-22 28C19 56 10 46 10 32V14l22-8z" fill="#E4E8DF" stroke="#5E6B56" stroke-width="2"/>
+          <path d="M21 33l8 8 15-16" fill="none" stroke="#5E6B56" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="section-kicker">Segurança na compra</p>
+          <h2 id="titulo-garantia">Garantia de 7 dias</h2>
+          <p class="placeholder">[Texto provisório, a confirmar com você e com a política da Kiwify.] Por lei, compras feitas pela internet no Brasil têm prazo de 7 dias para arrependimento. A formulação final desta seção usa o texto que você aprovar, sem criar condição extra.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="band" aria-labelledby="titulo-faq">
+      <div class="wrap">
+        <p class="section-kicker">Perguntas frequentes</p>
+        <h2 id="titulo-faq">Dúvidas comuns</h2>
+        <p class="section-intro">As respostas abaixo são estruturais. Onde faltar a sua informação, o espaço ficou marcado para completar.</p>
+        <details>
+          <summary>Como recebo o material depois do pagamento?</summary>
+          <p>[A confirmar com a cliente.] Em geral, a Kiwify libera o acesso automaticamente após a confirmação do pagamento, no e-mail usado na compra.</p>
+        </details>
+        <details>
+          <summary>A página e o material funcionam no celular?</summary>
+          <p>Sim. A página é feita para celular e computador. O formato do material em si segue o que você já produziu (arquivo, área de membros ou outro acesso da Kiwify).</p>
+        </details>
+        <details>
+          <summary>Esse produto substitui terapia ou acompanhamento clínico?</summary>
+          <p>Não. É um produto digital de apoio emocional e não substitui psicoterapia, acompanhamento clínico ou orientação profissional personalizada.</p>
+        </details>
+        <details>
+          <summary>Qual é o valor?</summary>
+          <p>R$ 47, conforme o anúncio do projeto. O valor exibido na página final será o que você confirmar, junto com o link de checkout da Kiwify.</p>
+        </details>
+        <details>
+          <summary>Existe garantia?</summary>
+          <p>Garantia de 7 dias — texto provisório, a confirmar com a política da Kiwify e com o seu texto final.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="checkout" aria-labelledby="titulo-checkout">
+      <div class="wrap">
+        <div class="checkout">
+          <p class="section-kicker">Acesso ao material</p>
+          <h2 id="titulo-checkout">SOS Abstinência Emocional</h2>
+          <p class="amount">R$ 47</p>
+          <p class="amount-note">Valor informado no anúncio</p>
+          <div class="hero-actions" style="justify-content:center;margin-top:1.4rem">
+            <a class="btn btn-lg" href="#checkout">Quero acessar o material</a>
+          </div>
+          <p class="demo-pay">Nesta demonstração, o botão não abre um checkout real. Na versão final, todos os botões de compra levam ao link de pagamento da Kiwify que você enviar.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site wrap">
+    <p>Demonstração de layout · Não é a página oficial do produto SOS Abstinência Emocional.</p>
+    <p>Textos, imagens e identidade visual oficiais serão inseridos apenas com o material da cliente. Página não indexada.</p>
+  </footer>
+</body>
+</html>
